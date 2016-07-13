@@ -1,4 +1,7 @@
 #include <Shell.h>
+#include <Servo.h>
+
+Servo esc;
 
 uint8_t setSpeed(String parameters)
 {
@@ -7,12 +10,14 @@ uint8_t setSpeed(String parameters)
   Serial.print('\n');
   Serial.print("Parameters: ");
   Serial.print(parameters);
+
+  esc.write(parameters.toInt());
+
   return 0;
 }
 
 void setup() {
-  // put your setup code here, to run once:
-
+  esc.attach(9);
 }
 
 void loop() {
